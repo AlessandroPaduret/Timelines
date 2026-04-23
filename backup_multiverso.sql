@@ -178,7 +178,8 @@ ALTER TABLE ONLY public.universo
 --
 
 ALTER TABLE ONLY public.variante
-    ADD CONSTRAINT variante_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT variante_pkey PRIMARY KEY (id),
+    ADD CONSTRAINT unique_variante_identita UNIQUE (nome_variante, personaggio_id, universo_id);
 
 
 --

@@ -1,10 +1,11 @@
 
 ## Indice
 
-###### Abstract
-###### Requisiti
-###### Schema Concettuale
-###### Schema Logico
+1. Abstract
+2. Requisiti
+3. Schema Concettuale
+4. Schema Logico
+5. Query di esempio
 
 
 ## Abstract
@@ -18,17 +19,14 @@ Si vuole creare un database per la gestione di un universo narrativo complesso, 
 ## Requisiti
 
 Di ogni universo ci interessa: nome, descrizione.
-Di ogni personaggio ci interessa: nome, descrizione.
-Una variante è un personaggio che esiste in un universo specifico. 
-Di ogni variante ci interessa: id, personaggio_id, universo_id.
 
+Di ogni personaggio ci interessa: nome, descrizione. 
+Un personaggio può avere più varianti, ognuna associata a un universo specifico.
 
+Di ogni variante ci interessa: nome variante, universo di appartenenza, personaggio di riferimento.
 
-Ci sono tanti universi identificati da un id. personaggi identificati da un nome e una descrizione.
-ogni personaggio può esistere in più universi (varianti) e ogni variante è associata a un universo specifico.
-ogni personaggio può viaggiare tra universi diversi.
-di ogni viaggio ci interessano: data, universo di partenza, universo di arrivo, personaggio coinvolto, motivo del viaggio
-
+Le varianti possono viaggiare tra universi diversi. Di ogni viaggio ci interessa: data_partenza, data_arrivo, universo di partenza, universo di arrivo, personaggi coinvolti. 
+Il viaggio può essere di gruppo, quindi più personaggi possono viaggiare insieme.
 
 ## Schema concettuale
 
@@ -42,6 +40,9 @@ di ogni viaggio ci interessano: data, universo di partenza, universo di arrivo, 
 - Variante (**id**, nome_variante, nome_personaggio, universo_id)
 - Viaggio (**id**, universo_partenza_id, universo_arrivo_id, data_partenza,data_arrivo)
 - Partecipazione (**variante_id**, **viaggio_id**)
+
+
+nota: la tripla (nome_variante, nome_personaggio, universo_id) è univoca, ma non è chiave perché sarebbe troppo lunga da portare in tutte le tabelle che la usano come riferimento.
 
 
 nota: uso gli id perché altrimenti le tabelle diventano troppo grandi e portare chiavi coposte è scomodo
